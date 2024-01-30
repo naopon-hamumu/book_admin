@@ -6,8 +6,10 @@ class BooksController < ApplicationController
 
   def show
     respond_to do |format| # 2種類のフォーマットでビューのレンダリングを行う
-      format.html
-      format.json
+      format.html do |html|
+        html.mobile { redirect_to profile_path }
+      end
+      format.json { render json: @book }
     end
   end
 
